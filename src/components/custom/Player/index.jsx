@@ -271,9 +271,6 @@ const Player = ({ bookmarks, setBookmarks, time }) => {
         onContextMenu={(e) => e.preventDefault()}
         onMouseMove={handleMouseMove}
         onDoubleClick={handleDoubleClick}
-        onClick={() => {
-          handlePlayPause(playerState.playing ? "pause" : "play");
-        }}
       >
         <video
           ref={videoPlayerRef}
