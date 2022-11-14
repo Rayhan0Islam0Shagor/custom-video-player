@@ -8,6 +8,8 @@ import Video from "/video.mp4";
 import video2 from "/video2.mp4";
 import video3 from "/video3.mp4";
 import { format } from "../../../utils/formatTime.js";
+import useKey from "../../../hooks/useKey.jsx";
+import { WindowSharp } from "@mui/icons-material";
 
 const useStyles = makeStyles({
   player_wrapper: {
@@ -78,7 +80,7 @@ const Player = ({ bookmarks, setBookmarks, time }) => {
     if (makePlay === "play") {
       videoPlayerRef.current.play();
       setPlayerState({ ...playerState, playing: true });
-    } else {
+    } else if (makePlay === "pause") {
       videoPlayerRef.current.pause();
       setPlayerState({ ...playerState, playing: false });
     }
@@ -231,15 +233,16 @@ const Player = ({ bookmarks, setBookmarks, time }) => {
     setPlayerState({ ...playerState, isFullScreen: !playerState.isFullScreen });
   };
 
-  React.useEffect(() => {
-    window.addEventListener("keydown", (e) => {
-      if (e.code === "ArrowRight") {
-        handleForward();
-      } else if (e.code === "ArrowLeft") {
-        handleRewind();
-      }
-    });
-  }, []);
+  // React.useEffect(() => {
+  //   windows.addEventListener("keydown", (e) => {
+  //     if (e.key === " " || "space") {
+  //       e.preventDefault();
+  //       handlePlayPause(playing ? "pause" : "play");
+  //     }
+  //   });
+
+  //   return () => windows.removeEventListener("keydown", null);
+  // }, []);
 
   const events = {
     handlePlayPause,
@@ -258,6 +261,21 @@ const Player = ({ bookmarks, setBookmarks, time }) => {
     totalDuration,
     handleBookmark,
   };
+
+  // useKey("ArrowRight", handleForward);
+  // useKey("ArrowLeft", handleRewind);
+  // useKey("ArrowUp", () => handleVolumeChange(null, volume * 100 + 5));
+  // useKey("ArrowDown", () => handleVolumeChange(null, volume * 100 - 5));
+  // useKey("m" || "M", handleMuteToggle);
+  // useKey("f" || "F", handleFullScreen);
+  // useKey("b" || "B", handleBookmark);
+  // useKey("n" || "N", () => handleNextPrev("next"));
+  // useKey("p" || "P", () => handleNextPrev("prev"));
+  // useKey("1", () => handlePlaybackRateChange(0.5));
+  // useKey("2", () => handlePlaybackRateChange(1));
+  // useKey("3", () => handlePlaybackRateChange(1.5));
+  // useKey("4", () => handlePlaybackRateChange(2));
+  // useKey("0", () => handleSeekChange(null, 0));
 
   return (
     <Box
