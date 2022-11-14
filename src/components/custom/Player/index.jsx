@@ -81,6 +81,7 @@ const Player = ({ bookmarks, setBookmarks, time }) => {
       videoPlayerRef.current.play();
       setPlayerState({ ...playerState, playing: true });
     } else if (makePlay === "pause") {
+      handleMouseMove();
       videoPlayerRef.current.pause();
       setPlayerState({ ...playerState, playing: false });
     }
@@ -89,11 +90,13 @@ const Player = ({ bookmarks, setBookmarks, time }) => {
   // rewind
   const handleRewind = () => {
     videoPlayerRef.current.currentTime -= 10;
+    handleMouseMove();
   };
 
   // forward
   const handleForward = () => {
     videoPlayerRef.current.currentTime += 10;
+    handleMouseMove();
   };
 
   // next and prev
@@ -186,6 +189,7 @@ const Player = ({ bookmarks, setBookmarks, time }) => {
     setPlayerState({ ...playerState, playing: true });
   };
 
+  // video duration
   const currentTime = videoPlayerRef.current
     ? videoPlayerRef?.current?.currentTime
     : "00:00";
@@ -233,17 +237,7 @@ const Player = ({ bookmarks, setBookmarks, time }) => {
     setPlayerState({ ...playerState, isFullScreen: !playerState.isFullScreen });
   };
 
-  // React.useEffect(() => {
-  //   windows.addEventListener("keydown", (e) => {
-  //     if (e.key === " " || "space") {
-  //       e.preventDefault();
-  //       handlePlayPause(playing ? "pause" : "play");
-  //     }
-  //   });
-
-  //   return () => windows.removeEventListener("keydown", null);
-  // }, []);
-
+  // all events are here
   const events = {
     handlePlayPause,
     handleRewind,
@@ -262,6 +256,10 @@ const Player = ({ bookmarks, setBookmarks, time }) => {
     handleBookmark,
   };
 
+  // keyboard events are here
+  useKey(" " || "space" || 32, () =>
+    handlePlayPause(playing ? "pause" : "play")
+  );
   useKey("ArrowRight", handleForward);
   useKey("ArrowLeft", handleRewind);
   useKey("ArrowUp", () => handleVolumeChange(null, volume * 100 + 5));
