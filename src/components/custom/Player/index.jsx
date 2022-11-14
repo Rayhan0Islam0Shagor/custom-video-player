@@ -262,20 +262,20 @@ const Player = ({ bookmarks, setBookmarks, time }) => {
     handleBookmark,
   };
 
-  // useKey("ArrowRight", handleForward);
-  // useKey("ArrowLeft", handleRewind);
-  // useKey("ArrowUp", () => handleVolumeChange(null, volume * 100 + 5));
-  // useKey("ArrowDown", () => handleVolumeChange(null, volume * 100 - 5));
-  // useKey("m" || "M", handleMuteToggle);
-  // useKey("f" || "F", handleFullScreen);
-  // useKey("b" || "B", handleBookmark);
-  // useKey("n" || "N", () => handleNextPrev("next"));
-  // useKey("p" || "P", () => handleNextPrev("prev"));
-  // useKey("1", () => handlePlaybackRateChange(0.5));
-  // useKey("2", () => handlePlaybackRateChange(1));
-  // useKey("3", () => handlePlaybackRateChange(1.5));
-  // useKey("4", () => handlePlaybackRateChange(2));
-  // useKey("0", () => handleSeekChange(null, 0));
+  useKey("ArrowRight", handleForward);
+  useKey("ArrowLeft", handleRewind);
+  useKey("ArrowUp", () => handleVolumeChange(null, volume * 100 + 5));
+  useKey("ArrowDown", () => handleVolumeChange(null, volume * 100 - 5));
+  useKey("m" || "M", handleMuteToggle);
+  useKey("f" || "F", handleFullScreen);
+  useKey("b" || "B", handleBookmark);
+  useKey("n" || "N", () => handleNextPrev("next"));
+  useKey("p" || "P", () => handleNextPrev("prev"));
+  useKey("1", () => handlePlaybackRateChange(0.5));
+  useKey("2", () => handlePlaybackRateChange(1));
+  useKey("3", () => handlePlaybackRateChange(1.5));
+  useKey("4", () => handlePlaybackRateChange(2));
+  useKey("0", () => handleSeekChange(null, 0));
 
   return (
     <Box
