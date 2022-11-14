@@ -130,6 +130,7 @@ const Player = ({ bookmarks, setBookmarks, time }) => {
       volume: parseFloat(newValue / 100),
       muted: newValue === 0 ? true : false,
     });
+    handleMouseMove();
   };
 
   const handleVolumeSeekDown = (e, newValue) => {
@@ -139,6 +140,7 @@ const Player = ({ bookmarks, setBookmarks, time }) => {
       volume: parseFloat(newValue / 100),
       muted: newValue === 0 ? true : false,
     });
+    handleMouseMove();
   };
 
   // playback rate
