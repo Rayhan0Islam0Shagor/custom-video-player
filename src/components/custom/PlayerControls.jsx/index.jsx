@@ -18,6 +18,7 @@ import SkipNextIcon from "@mui/icons-material/SkipNext";
 import SkipPreviousIcon from "@mui/icons-material/SkipPrevious";
 import PauseIcon from "@mui/icons-material/Pause";
 import VolumeOffIcon from "@mui/icons-material/VolumeOff";
+import DownloadIcon from "@mui/icons-material/Download";
 
 // styles
 import { makeStyles } from "@mui/styles";
@@ -80,6 +81,7 @@ const PlayerControls = React.forwardRef(
       elapsedTime,
       totalDuration,
       handleBookmark,
+      handleDownload,
     } = events;
 
     const classes = useStyles();
@@ -315,6 +317,13 @@ const PlayerControls = React.forwardRef(
                   alignItems: "center",
                 }}
               >
+                <IconButton
+                  aria-label="download"
+                  onClick={() => handleDownload(videoInfo)}
+                >
+                  <DownloadIcon className={classes.bottomIcon} />
+                </IconButton>
+
                 <Button
                   variant="text"
                   sx={{

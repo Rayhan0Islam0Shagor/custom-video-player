@@ -9,7 +9,6 @@ import video2 from "/video2.mp4";
 import video3 from "/video3.mp4";
 import { format } from "../../../utils/formatTime.js";
 import useKey from "../../../hooks/useKey.jsx";
-import { WindowSharp } from "@mui/icons-material";
 
 const useStyles = makeStyles({
   player_wrapper: {
@@ -46,7 +45,7 @@ const videoPlayerOptions = {
 
 let count = 0;
 
-const Player = ({ bookmarks, setBookmarks, time }) => {
+const Player = ({ handleDownload, bookmarks, setBookmarks, time }) => {
   const videoPlayerRef = React.useRef(null);
   const playerContainerRef = React.useRef(null);
   const canvasRef = React.useRef(null);
@@ -256,6 +255,7 @@ const Player = ({ bookmarks, setBookmarks, time }) => {
     elapsedTime,
     totalDuration,
     handleBookmark,
+    handleDownload,
   };
 
   // keyboard events are here
