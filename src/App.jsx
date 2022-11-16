@@ -9,15 +9,12 @@ import Player from "./components/custom/Player";
 import DownloadIcon from "@mui/icons-material/Download";
 import IconButton from "@mui/material/IconButton";
 import Box from "@mui/material/Box";
-
 import "./App.css";
-import Downloader from "./components/Downloader/Downloader";
 import useFileDownloader from "./hooks/useFileDownloader";
 
 function App() {
   const [bookmarks, setBookmarks] = React.useState([]);
   const [time, setTime] = React.useState("");
-  // video download
   const [downloadFile, downloaderComponentUI] = useFileDownloader();
 
   const handleDownload = (file) => downloadFile(file);

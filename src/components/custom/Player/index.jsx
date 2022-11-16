@@ -271,6 +271,7 @@ const Player = ({ handleDownload, bookmarks, setBookmarks, time }) => {
   useKey("b" || "B", handleBookmark);
   useKey("n" || "N", () => handleNextPrev("next"));
   useKey("p" || "P", () => handleNextPrev("prev"));
+  useKey("d" || "D", () => handleDownload(videoList[currentVideo]));
   useKey("1", () => handlePlaybackRateChange(0.5));
   useKey("2", () => handlePlaybackRateChange(1));
   useKey("3", () => handlePlaybackRateChange(1.5));

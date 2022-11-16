@@ -5,16 +5,16 @@ import CardContent from "@mui/material/CardContent";
 import LinearProgress from "@mui/material/LinearProgress";
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
-import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
+import CancelIcon from "@mui/icons-material/Cancel";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import { makeStyles } from "@mui/styles";
 import axios from "axios";
+import { IconButton } from "@mui/material";
 
 const useStyles = makeStyles({
   downloader: {
     width: "500px",
-    maxHeight: "160px",
+    maxHeight: "170px",
     position: "fixed",
     right: "10px",
     bottom: "10px",
@@ -165,7 +165,7 @@ const DownloadItem = ({ title, src, removeFile }) => {
                 marginLeft: "auto",
               }}
             >
-              {downloadInfo.completed && (
+              {downloadInfo.completed ? (
                 <span
                   style={{
                     display: "flex",
@@ -181,6 +181,16 @@ const DownloadItem = ({ title, src, removeFile }) => {
                     }}
                   />
                 </span>
+              ) : (
+                <Box
+                  sx={{
+                    float: "right",
+                  }}
+                >
+                  <IconButton onClick={removeFile}>
+                    <CancelIcon />
+                  </IconButton>
+                </Box>
               )}
             </Box>
           </Grid>
@@ -190,40 +200,6 @@ const DownloadItem = ({ title, src, removeFile }) => {
       <Grid item xs={12}>
         <LinearProgressWithLabel value={downloadInfo.progress} />
       </Grid>
-
-      {/* <Box
-        sx={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-        }}
-      >
-        <Box
-          sx={{
-            display: "flex",
-            alignItems: "center",
-            gap: "10px",
-          }}
-        >
-          <div className="d-inline font-weight-bold text-truncate">{title}</div>
-          <div className="d-inline ml-2">
-            <small>
-              {downloadInfo.loaded > 0 && (
-                <>
-                  <span className="text-success">
-                    {formatBytes(downloadInfo.loaded)}
-                  </span>
-                  / {formatBytes(downloadInfo.total)}
-                </>
-              )}
-
-              {downloadInfo.loaded === 0 && <>Initializing...</>}
-            </small>
-          </div>
-        </Box>
-      </Box>
-
-      <LinearProgressWithLabel value={downloadInfo.progress} /> */}
     </Grid>
   );
 };
