@@ -19,6 +19,15 @@ function App() {
 
   const handleDownload = (file) => downloadFile(file);
 
+  React.useLayoutEffect(() => {
+    const loader = document.getElementById("lds-facebook");
+    loader.classList.add("loaded");
+
+    setTimeout(() => {
+      document.body.removeChild(loader);
+    }, 300);
+  }, []);
+
   React.useEffect(() => {
     const timer = setTimeout(() => {
       setTime("");
